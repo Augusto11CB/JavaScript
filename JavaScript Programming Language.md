@@ -45,7 +45,7 @@ console.log(message);
 ```
 Hello
 
-augusto;
+Augusto;
 ```
 
 ### Converting Strings to Numbers
@@ -84,11 +84,78 @@ if((1.1 + 1.1).toFixed(2) === 2.2) {
 	// toFixed returns a string
 	// in order to converte the string return from toFixed back into a a number use the '+'
 
-	// This console.log is printend!
+	// This console.log is printed!
 	console.log(true);
 }
 
 ```
 
+## Functions
+
+```javascript
+let myNiceFuncion = function () {
+	console.log("here is a msg");
+}
+
+let myFuncion = function loggingFunction() {
+	console.log("here is a msg");
+}
+
+// It works fine!!
+myFuncion();
+
+// It does not work
+// Uncaughy ReferenceError:loggingFunction is not defined
+loggingFunction();
 
 
+// The idea to define the name for a `function expression` is for debugging purposes
+myNiceFuncion(); 
+```
+
+
+### Function Scope
+```javascript
+function getSecretCode(value) {
+
+	let keyGenerator = function() {
+		let key = 12;
+		console.log('in keyGenerator : ', key);
+		return key;	
+	}
+
+	let code = value * keyGenerator();
+	console.log('in getSecretCode: ', key)
+	return code;
+}
+
+let secretCode = getSecretCode(2);
+console.log('in out: ', secretCode )
+
+
+/*
+* in keyGenerator: 12
+* in getSecretCode: 42
+* in out: 24
+*/
+```
+
+## JavaScript - Objects
+### How an object is defined in JavaScript?
+
+```javascript
+let person = {
+	name:"John",
+	age:32,
+	partTime:false
+	showInfo: function() {
+		console.log(this.name); // WE MUST PUT `this` keyword in order to access the object variable
+	}
+};
+```
+
+### How to change the values of object's properties
+```
+person.age = 33;
+person['age'] = 44;
+```
