@@ -159,3 +159,105 @@ let person = {
 person.age = 33;
 person['age'] = 44;
 ```
+
+### Standard built-in objects 
+#### `Date`
+- [DOC](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+#### `Math`
+- Math.sqrt()
+- Math.random()
+- Math.trunc() == The **`Math.trunc()`** function returns the integer part of a number by removing any fractional digits.
+	```js
+	console.log(Math.trunc(13.37));
+	// expected output: 13
+
+	console.log(Math.trunc(42.84));
+	// expected output: 42
+	```
+- Math.max()
+	```js
+	console.log(Math.max(1, 3, 2));
+	// expected output: 3
+
+	console.log(Math.max(-1, -3, -2));
+	// expected output: -1
+
+	const array1 = [1, 3, 2];
+
+	console.log(Math.max(...array1)); // we need these tree dots =( 
+	// expected output: 3 
+	```
+	
+#### `Number` 
+- Number.parseInt(stringNumber, radix) 
+	- stringNumber == The value to parse. If this argument is not a string, then it is converted to one using the ToString abstract operation.
+	- radix == An integer between `2` and `36` that represents the _radix_ (the base in mathematical numeral systems) of the `string`. It is an optional parameter
+- Checking whether values are numeric
+	```js
+	function sanitise(x) {
+	  if (isNaN(x)) {
+	    return Number.NaN;
+	  }
+	  return x;
+	}
+	```
+
+#### `String` 
+- String.charAt()
+	```javascript
+	const sentence = 'The quick brown fox jumps over the lazy dog.';
+
+	const index = 4;
+
+	console.log(`The character at index ${index} is ${sentence.charAt(index)}`);
+	// expected output: "The character at index 4 is q"
+	```
+- String.concat()
+	```javascript
+	const str1 = 'Hello';
+	const str2 = 'World';
+
+	console.log(str1.concat(' ', str2));
+	// expected output: "Hello World"
+
+	console.log(str2.concat(', ', str1));
+	// expected output: "World, Hello"
+	```
+	
+#### `Map`
+- Map.clear()
+- Map.delete()
+- Map.entries()
+- Map.forEach()
+- Map.get()
+- Map.has()
+- Map.keys()
+- Map.set()
+- Map.values()
+
+#### `JSON`
+- JSON.parse
+	```js
+	const json = '{"result":true, "count":42}';
+	const obj = JSON.parse(json);
+
+	console.log(obj.count);
+	// expected output: 42
+
+	console.log(obj.result);
+	// expected output: true
+	```
+- JSON.stringify()
+	```js
+	console.log(JSON.stringify({ x: 5, y: 6 }));
+	// expected output: "{"x":5,"y":6}"
+
+	console.log(JSON.stringify([new Number(3), new String('false'), new Boolean(false)]));
+	// expected output: "[3,"false",false]"
+
+	console.log(JSON.stringify({ x: [10, undefined, function(){}, Symbol('')] }));
+	// expected output: "{"x":[10,null,null,null]}"
+
+	console.log(JSON.stringify(new Date(2006, 0, 2, 15, 4, 5)));
+	// expected output: ""2006-01-02T15:04:05.000Z""
+	```
