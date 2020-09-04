@@ -261,3 +261,83 @@ person['age'] = 44;
 	console.log(JSON.stringify(new Date(2006, 0, 2, 15, 4, 5)));
 	// expected output: ""2006-01-02T15:04:05.000Z""
 	```
+
+## Arrays
+
+### Manipulating Arrays
+
+```js
+const values = ['a', 'b', 'c'];
+```
+
+#### `push()`
+```js
+values.push('d');
+console.log(values); //a b c d
+```
+
+#### `pop()`
+```js
+const last = values.pop();
+console.log(last); // c 
+```
+
+#### `shift`
+```js
+const first = values.shift();
+console.log(first); // a 
+
+// result values = ['b', 'c']
+```
+
+#### `unshift`
+```js
+values.unshift('z');
+console.log(values); //  
+
+// values = ['z','a', 'b', 'c'];
+```
+
+### Array.slice()
+```js
+const values = ['a', 'b', 'c'];
+const newValues = values.slice(1,2);
+console.log(newValues); // b
+```
+
+### Array.splice()
+#### Deleting
+```js
+const values = ['a', 'b', 'c'];
+values.splice(1,1); // index, number of elements to be deleted
+console.log(newValues); // a c
+```
+
+#### Inserting
+```js
+const values = ['a', 'b', 'c'];
+values.splice(1, 0, 'foo'); // index, number of elements to be  deleted after this item (including it), the element to be inserted
+console.log(newValues); // 'a', 'foo', 'b', 'c'
+```
+
+### Array.filter()
+```js
+const values = ['a', 'b', 'c'];
+const set = values.filter(function(item) {
+	return item > 'b';
+});
+console.log(set); // a c
+```
+
+### Array.find()
+```js
+const values = ['a', 'bbb', 'c'];
+const set = values.fimd(function(item) {
+	return item.length > 1;
+});
+console.log(set); // a c
+```
+
+
+## DOM - Document Object Model
+Modifying the web page and getting events from an user using the web page.
