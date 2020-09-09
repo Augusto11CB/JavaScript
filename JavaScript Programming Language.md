@@ -263,9 +263,33 @@ person['age'] = 44;
 	```
 
 ## Arrays
+```js
+let theArray= Array(3);
+// theArray was created and has 3 empty slots ;
+```
+
+### `Arrays.of`
+```js
+let niceArray= Array.of(12,9,3);
+// niceArray has 3 slots and in each one of then we have the 12, 9 and 3 respectively
+```
+
+### Spread Operator (`...myArray`)
+```js
+let mothlySales= Array.of(3000,1200,12200);
+// theArray was created and has 3 empty slots ;
+
+function addThreeMonthsIncome(m1, m2, m3){
+    return m1 + m2 + m3;
+}
+
+let total = addThreeMonthsIncome(...mothlySales);
+
+// instead of doing:
+// let total = addThreeMonthsIncome(mothlySales[0], mothlySales[1], mothlySales[2]);
+```
 
 ### Manipulating Arrays
-
 ```js
 const values = ['a', 'b', 'c'];
 ```
@@ -332,10 +356,14 @@ console.log(set); // a c
 ### Array.find()
 ```js
 const values = ['a', 'bbb', 'c'];
-const set = values.fimd(function(item) {
+const set = values.find(function(item) {
 	return item.length > 1;
 });
 console.log(set); // a c
+
+function findOver1000() {
+	return monthlySales.find(element => element > 1000);
+}
 ```
 
 
