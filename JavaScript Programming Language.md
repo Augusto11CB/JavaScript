@@ -15,21 +15,28 @@ let price = 2.12,
 
 ### `var`
 **WARNING -** When misused, it does not show errors like in the example below:
-
 ```javascript
 showMessage(price);
 var price = 25
 ```
 
 ## `const`  - Constants
-
 ```javascript
 // declaring a constant
 const NUMBER_MAX = 12;
 ```
 
-## String
+## `for`
+```javascript
+const monthlySales = new Set();
+function addSale(newSale) {
+	monthlySales.add(newSale);
 
+	for(let total of monthlySales) console.log(total);
+}
+```
+
+## String
 ###  Using The  ' ` '
 ```javascript
 // declaring a constant
@@ -91,7 +98,6 @@ if((1.1 + 1.1).toFixed(2) === 2.2) {
 ```
 
 ## Functions
-
 ```javascript
 let myNiceFuncion = function () {
 	console.log("here is a msg");
@@ -142,7 +148,6 @@ console.log('in out: ', secretCode )
 
 ## JavaScript - Objects
 ### How an object is defined in JavaScript?
-
 ```javascript
 let person = {
 	name:"John",
@@ -366,6 +371,15 @@ function findOver1000() {
 }
 ```
 
+## Set
+### `forEach`
+```js
+const mySet = new Set();
+// value1 == value2, and value 1 come from mySet;
+mySet((value1, value2, mySet) => {
+	console.log(value1;
+});
+```
 
 ## DOM - Document Object Model
 Modifying the web page and getting events from an user using the web page.
