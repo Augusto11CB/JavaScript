@@ -381,5 +381,11 @@ mySet((value1, value2, mySet) => {
 });
 ```
 
+## Map
+```js
+const monthlySales = new Map();
+monthlySales.set(1, 'test');
+```
+
 ## DOM - Document Object Model
 Modifying the web page and getting events from an user using the web page.
