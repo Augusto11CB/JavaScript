@@ -201,3 +201,116 @@ unction myCounter() {
 ```
 
 The existence of the nested function keeps the  `count`  variable from being available for garbage collection, therefore  `count`  remains available for future access.
+
+## Immediately-Invoked Function Expressions: Structure and Syntax
+
+### Function Declarations vs. Function Expressions 
+In JavaScript functions can be created either through a function declaration or a function expression. A function declaration is the "normal" way of creating a named function.
+
+```javascript
+// Named function declaration
+function myFunction () { /* logic here */ }
+
+```
+
+On the other hand, if a function is assigned to a variable or property, you are dealing with a function expression.
+
+```javascript
+// Assignment of a function expression to a variable
+var myFunction = function () { /* logic here */ };
+
+// Assignment of a function expression to a property
+var myObj = {
+    myFunction: function () { /* logic here */ }
+};
+```
+The key thing about JavaScript expressions is that they return values. In both cases above the return value of the expression is the function.
+
+###  Immediately-Invoked Function Expressions
+
+An immediately-invoked function expression, or IIFE (pronounced  _iffy_), is a function that is called immediately after it is defined. 
+
+```js
+(function sayHi(){
+    alert('Hi there!');
+  }
+)();
+
+// alerts 'Hi there!'
+```
+
+### Passing Arguments into IIFE's
+```js
+(function (name){
+    alert(`Hi, ${name}`);
+  }
+)('Andrew');
+
+// alerts 'Hi, Andrew'
+
+
+(function (x, y){
+    console.log(x * y);
+  }
+)(2, 3);
+
+// 6
+```
+
+The second pair of parentheses not only immediately executes the function preceding it -- it's also the place to put any arguments that the function may need
+
+###  Alternative Syntax for IIFE's 💡
+```js
+(function sayHi(){
+   alert('Hi there!');
+}());
+
+// alerts 'Hi there!'
+```
+
+### Benefits of Immediately-Invoked Function Expressions
+The primary reason to use an IIFE is to obtain data privacy. Because JavaScript's  `var`  scopes variables to their containing function, any variables declared within the IIFE cannot be accessed by the outside world. [Reference: An Introduction to IIFEs - Immediately Invoked Function Expressions ](http://adripofjavascript.com/blog/drips/an-introduction-to-iffes-immediately-invoked-function-expressions.html)
+
+```javascript
+(function () {
+    var foo = "bar";
+
+    // Outputs: "bar"
+    console.log(foo);
+})();
+
+// ReferenceError: foo is not defined
+console.log(foo);
+
+```
+
+Of course, you could explicitly name and then invoke a function to achieve the same ends.
+
+```javascript
+function myImmediateFunction () {
+    var foo = "bar";
+
+    // Outputs: "bar"
+    console.log(foo);
+}
+
+myImmediateFunction();
+
+// ReferenceError: foo is not defined
+console.log(foo);
+
+```
+
+However, this approach has a few downsides. First, it unnecessarily takes up a name in the global namespace, increasing the possibility of name collisions. Second, the intentions of this code aren't as self-documenting as an IIFE. And third, because it is named and isn't self-documenting it might accidentally be invoked more than once.
+
+Another great opportunity to use an IFFE is when you want to execute some code without creating extra global variables. However, note that an IIFE is only intended to be invoked once, to create a unique execution context. If you have some code that is expected to be re-used (e.g., a function meant to be executed more than once in the application), declaring the function and then invoking it might be a better option.
+
+All in all, if you simply have a one-time task (e.g., initializing an application), an IIFE is a great way to get something done without polluting your the global environment with extra variables. Cleaning up the global namespace decreases the chance of collisions with duplicate variable names, after all.
+
+### Summary about Immediately-Invoked Function Expressions
+An  **immediately-invoked function expression**  (IIFE) is a function that is called immediately after it is defined. Utilizing an IIFE alongside closures allows for a  **private scope**, which maintains privacy for variables defined within them. And since less variables are created, an IIFE will help to minimize pollution of the global environment, hindering the chances of variable name collisions.
+
+### References about Immediately-Invoked Function Expressions
+-   [Function Declarations vs. Function Expressions](https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/)
+-   [An Introduction to IIFEs - Immediately Invoked Function Expressions](http://adripofjavascript.com/blog/drips/an-introduction-to-iffes-immediately-invoked-function-expressions.html)  on A Drip of JavaScript
+-   [Immediately-Invoked Function Expression (IIFE)](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)  by Ben Alman
