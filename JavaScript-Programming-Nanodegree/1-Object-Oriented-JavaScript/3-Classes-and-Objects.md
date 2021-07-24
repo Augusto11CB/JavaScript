@@ -308,3 +308,61 @@ console.log(board.constructor);
 //   this.material = 'bamboo';
 // }
 ```
+
+## Prototypal Inheritance - Subclasses
+Recap: an object's constructor function's prototype is first place searched when the JavaScript engine tries to access a property that doesn't exist in the object itself.
+
+`__proto__` is a property of all objects (i.e., instances) made by a **constructor function**, and points directly to that constructor's `prototype` object.
+
+```
+const bear = {
+  claws: true,
+  diet: 'carnivore'
+};
+```
+
+```
+function PolarBear() { 
+  // ...
+}
+
+PolarBear.prototype = bear;
+
+const snowball = new PolarBear();
+
+snowball.color = 'white';
+snowball.favoriteDrink = 'cola';
+
+console.log(snowball.claws);
+// true
+
+console.log(snowball.diet);
+// 'carnivore'
+
+console.log(snowball.__proto__);
+
+// { claws: true, diet: 'carnivore' }
+```
+
+### `___proto___` and `prototype` 
+```
+function GuineaPig (name) {
+  this.name = name;
+  this.isCute = true;
+}
+
+const waffle = new GuineaPig('Waffle');
+```
+
+When the new instance of `GuineaPig` is created, the special property `waffle.__proto__` is set to `GuineaPig.prototype`. This secret link allows instances of the `GuineaPig` constructor to access properties of `GuineaPig.prototype`. Keep in mind that **you should never use the  `__proto__`  in any code you write.**
+
+
+
+### 💡 What About Just Inheriting the Prototype? 💡
+Let's say we want a  `Child`  object to inherit from a  `Parent`  object. Why shouldn't we just set  `Child.prototype = Parent.prototype`?
+
+First, recall that objects are passed by  _reference_. This means that since the  `Child.prototype`  object and the  `Parent.prototype`  object refer to the  _same object_  -- **any changes you make to  `Child`'s prototype will  _also_  be made to  `Parent`'s prototype**. We don't want children being able to modify properties of their parents!
+
+On top of all this, no prototype chain will be set up. What if we want an object to inherit from any object we want, not just its prototype?
+
+We still need a way to efficiently manage inheritance without mutating the prototype at all.
