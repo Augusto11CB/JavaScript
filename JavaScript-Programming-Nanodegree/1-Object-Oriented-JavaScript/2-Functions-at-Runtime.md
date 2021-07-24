@@ -202,6 +202,48 @@ unction myCounter() {
 
 The existence of the nested function keeps the  `count`  variable from being available for garbage collection, therefore  `count`  remains available for future access.
 
+### Closures and Objects
+```js
+function Radio(mode) {
+  let on = false;
+
+  return {
+    mode: mode,
+    turnOn: function () {
+      on = true;
+    },
+    isOn: function () {
+      return on;
+    }
+  };
+}
+
+let fmRadio = Radio('fm');
+
+fmRadio.on;
+//undefined
+
+fmRadio.isOn();
+// false
+
+fmRadio.turnOn();
+
+fmRadio.isOn();
+// true
+```
+
+```js
+let amRadio = Radio('am');
+
+amRadio.on;
+//undefined
+
+amRadio.isOn();
+// false
+
+```
+Note that `amRadio` and `fmRadio` do not share the same `on` variable. Even though `on` is `true` in `fmRadio`, in the `amRadio` after been created, the variable `on` is `false`.
+
 ## Immediately-Invoked Function Expressions: Structure and Syntax
 
 ### Function Declarations vs. Function Expressions 
