@@ -366,3 +366,4 @@ First, recall that objects are passed by  _reference_. This means that since the
 On top of all this, no prototype chain will be set up. What if we want an object to inherit from any object we want, not just its prototype?
 
 We still need a way to efficiently manage inheritance without mutating the prototype at all.
+
