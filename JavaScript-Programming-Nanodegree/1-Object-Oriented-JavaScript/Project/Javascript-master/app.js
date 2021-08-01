@@ -52,11 +52,6 @@ class Human extends Animal {
     }
 }
 
-function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
-
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.compareHeight = function (human) {
