@@ -218,4 +218,41 @@ Filter - The filter method iterates over every item in the array it is called on
 
 Reduce - The reduce method iterates over every item in the array it is called on, and keeps one value (for instance, the sum of all prices). Each item in the array is forgotten, and the end result is a single value. The uses of reduce vary greatly depending on your need, and it is typically the hardest one of the three array methods to master because though its logic is not complicated, its use cases can be very creative.
 
-## The `flat` Method
+### The `flat` Method
+"`flat` method is a tool that allows you to undo array nesting to exactly the level you want."
+
+```js
+var nestedArr = [1, 2, [3, 4, [5, 6]]];
+nestedArr.flat();
+console.log(nestedArr)
+// expected output: [1, 2, 3, 4, [5, 6]]
+
+var moreNested = [1, 2, [3, 4, [5, 6]]];
+moreNested.flat(2);
+console.log(moreNested)
+// expected output: [1, 2, 3, 4, 5, 6]
+```
+
+###  The `find` Method 
+`find` returns the value of the first element in the provided array that satisfies the provided testing function.
+
+"It is best to use find when you want to see if any item in array meets a criteria. find is a little bit simpler in that it only passes a single argument (the current value) and returns a single value from the array (the first one to pass the function’s test)"
+
+### The `include` Method
+`includes` determines whether an array contains a certain value among its entries, returning true or false as appropriate.
+
+```
+const ids = [
+    'ADHKE',
+    'ANFKM',
+    'QIMVU',
+    'PQMFU',
+    'ABCKO',
+    'IUABC'
+]
+
+const abc = ids.find(x => x.includes('ABC'))
+console.log(abc) // expected output: ABCKO
+// IUABC also includes 'ABC' but the find method won't change the output for any additional occurances of finding 'ABC'.
+
+```
