@@ -6,3 +6,47 @@
 
 ## ImmutableJS  
 ImmutableJS is a library that gives us Persistent Data Structures in JavaScript
+
+
+### Map
+```js
+const Immutable = require('immutable');
+
+// Map
+const map = Immutable.Map({ 
+  name: 'Wash',
+  ship: {
+      name: 'Serenity',
+      class: 'Firefly'
+  },
+  role: 'Pilot',
+});
+
+// Map - Set operation
+
+map.set('name','Augusto')
+   .set('role','Commander');
+
+
+console.log(map.toJS())
+
+// Merge Maps
+
+const mergedMap = map.merge(anotherRandomMap1, anotherRandomMap2);
+
+```
+
+### List
+```js
+
+const numbersList = Immutable.List([1, 2, 3])
+
+console.log(Array.from(numbersList));
+
+const myList1 = numbersList.set(0, '-1');
+const myList1 = numbersList.set(1, '-2');
+const myList1 = numbersList.set(2, '-3');
+const myList2 = myList1.push('-4')
+const myList2 = myList1.delete(3) // removing -4
+
+```
