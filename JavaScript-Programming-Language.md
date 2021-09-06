@@ -1,6 +1,5 @@
 # JavaScript Programming Language
 
-
 ## Declaring Variables
 
 ### `let`
@@ -389,3 +388,106 @@ monthlySales.set(1, 'test');
 
 ## DOM - Document Object Model
 Modifying the web page and getting events from an user using the web page.
+
+
+## Destructuring Assignment
+The destructuring assignment syntax is a JavaScript expression that makes it possible to **unpack** values from arrays, or properties from objects, into distinct variables.
+
+```js
+let { fadeAnim } = this.state;
+```
+
+Equals
+
+```js
+let fadeAnim = this.state.fadeAnim;
+```
+
+### Array Destructuring
+```js
+const foo = ['one', 'two', 'three'];
+
+const [red, yellow, green] = foo;
+console.log(red); // "one"
+console.log(yellow); // "two"
+console.log(green); // "three"
+```
+
+## Three dots ( `…` ) in JavaScript
+- Spread Operator
+- Rest Operator
+- [Reference](https://dev.to/sagar/three-dots---in-javascript-26ci)
+
+### Rest Parameters 
+With rest parameters it is possible to gatter any number of arguments into an array.
+
+```js
+function myFunc(a, b, ...args) {
+ console.log(a); // 22
+ console.log(b); // 98
+ console.log(args); // [43, 3, 26]
+};
+
+myFunc(22, 98, 43, 3, 26);
+```
+
+### Rest parameters Can Be Destructured
+
+```js
+function myFunc(...[x, y, z]) {
+  return x * y * z;
+}
+
+myFunc(1)          // NaN
+myFunc(1, 2, 3)    // 6
+myFunc(1, 2, 3, 4) // 6 (fourth parameter is not destructured)
+```
+
+### Spread Operators
+Spread operator is used to expand elements of an iterable (like an array) into places where multiple elements can fit.
+
+```js
+function myFunc(x, y, ...params) { // used rest operator here
+  console.log(x);
+  console.log(y);
+  console.log(params);
+}
+
+var inputs = ["a", "b", "c", "d", "e", "f"];
+myFunc(...inputs); // used spread operator here
+// "a"
+// "b"
+// ["c", "d", "e", "f"]
+```
+
+```js
+const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
+const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+
+const pizzas = [...featured, 'veg pizza', ...specialty];
+
+console.log(pizzas); // 'Deep Dish', 'Pepperoni', 'Hawaiian', 'veg pizza', 'Meatzza', 'Spicy Mama', 'Margherita'
+```
+
+```js
+var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+
+var clonedObj = { ...obj1 };
+// Object { foo: "bar", x: 42 }
+
+var mergedObj = { ...obj1, ...obj2 };
+// Object { foo: "baz", x: 42, y: 13 }
+```
+
+```js
+let {a, b, ...rest} = {a: 10, b: 20, c: 30, d: 40}
+console.log(a); // 10 
+console.log(b); // 20 
+console.log(rest); // { c: 30, d: 40 }
+```
+
+```js
+// An array of HTMLElement, not the annoying NodeList object
+const array = [...document.querySelectorAll('div')]; 
+```
